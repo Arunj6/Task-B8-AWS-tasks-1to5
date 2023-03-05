@@ -1,0 +1,16 @@
+
+
+
+#! /bin/bash
+yum update -y
+yum install -y httpd git
+
+mkdir /var/website
+
+git clone https://github.com/Arunj6/test-website1 /var/website/
+
+cp -r  /var/website/* /var/www/html/
+
+systemctl restart httpd.service
+
+systemctl enable httpd.service

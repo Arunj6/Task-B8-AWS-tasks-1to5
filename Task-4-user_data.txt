@@ -1,0 +1,21 @@
+
+
+#! /bin/bash
+yum update -y
+yum install -y httpd
+yum install -y amazon-efs-utils
+echo "fs-0e8fb26b4dd1f2538:/	 /var/www/html/	efs	defaults,_netdev   0   2" >> /etc/fstab
+
+
+WAIT_TIME=10
+sleep $WAIT_TIME
+mount -a
+
+systemctl restart httpd.service
+systemctl enable httpd.service
+
+
+
+
+
+
